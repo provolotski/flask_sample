@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%  block title %} Загрузчик данных из  МНС {% endblock %}</title>
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css' ) }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}">
+    {% endblock %}
+{% endblock %}
+</head>
+<body>
+<!--- верхнее меню -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Загрузчик всего </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav m-auto">
+            {%  if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/">Загрузка файлов</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/logout">выход</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/login">вход</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<!--- боковое меню -->
+<!--- основной блок -->
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="alert alert-danger">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<div class="col-md-9" id="main-content">
+    {% block content %}
+    основной блок
+    {% endblock %}
+</div>
+<footer class="text-center mt-4"> <p>&copy; 2024 ЦИТ Белстата </p></footer>
+
+</body>
+</html>

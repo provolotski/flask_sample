@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %} Вход пользователя {% endblock %}
+{% block content %}
+    <div class="container mt-2">
+        <h2>Авторизация пользователя</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Введите имя пользователя" required>
+            </div>
+             <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль" required>
+            </div>
+            <div class="form-group">
+                <label for="domain">Домен</label>
+                <select name="domain" class="form-control">
+                    <option value="belstat">Белстат</option>
+                    <option value="brestobl">ГСУ Брестской области</option>
+                    <option value="gomelobl">ГСУ Гомельской области</option>
+                    <option value="grodnoobl">ГСУ Гродненской области</option>
+                    <option value="minobl">ГСУ Минской области</option>
+                    <option value="minsk">ГСУ г. Минска</option>
+                    <option value="mogilevobl">ГСУ Могилевской области</option>
+                    <option value="vitebskobl">ГСУ Витебской области</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+    </div>
+{% endblock %}

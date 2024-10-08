@@ -1,0 +1,13 @@
+  body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+            #main-content {
+                flex: 1;
+            }
+            .sidebar {
+                height: 100vh;
+                padding: 10px;
+                background-color: #f8f9fa;
+            }
